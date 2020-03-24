@@ -1,4 +1,8 @@
 # This is an old version of the manual, updating is required
+## Action needed:
+## 1. Code cleaning (some scripts must be better written and path management for the various operating systems must be fixed.
+## 2. Add patch extractor code
+## 3. Add gui code
 
 # Dataset creation tool
 ###### By Alessandro Sebastianelli and Maria Pia Del Rosso

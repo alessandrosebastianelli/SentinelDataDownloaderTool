@@ -1,3 +1,5 @@
+# This is an old version of the manual, updating is required
+
 # Dataset creation tool
 ###### By Alessandro Sebastianelli and Maria Pia Del Rosso
 ## Introduction

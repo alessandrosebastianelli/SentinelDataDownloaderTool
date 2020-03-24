@@ -1,0 +1,9 @@
+code/__pycache__
+code/cleaner.py
+code/converter.py
+code/patch_extractor.py
+code/patch_extractor_v_2.py
+code/progress_bar.py
+code/dataset_preview.py
+code/dataset_preview_2.py
+code/main_gui.py

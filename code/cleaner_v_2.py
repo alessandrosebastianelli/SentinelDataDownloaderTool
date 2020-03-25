@@ -5,7 +5,7 @@ import os
 from imageio import imread
 import rasterio
 
-def find(directory,windows):
+def find(directory, windows):
     for region in glob(directory):
         if windows:
             r = region+'\\*'
@@ -19,11 +19,11 @@ def find(directory,windows):
                 p = period+'/*'
 
             for scene in glob(p):
-                if windows: 
+                if windows:
                     base_name = scene #+ '\\' + basename(scene)
                 else:
                     base_name = scene #+ '/' + basename(scene)
-                
+
                 yield base_name
 
 def get_locations(directory, windows):
@@ -33,9 +33,9 @@ def get_locations(directory, windows):
             splitted = region.split('\\')
         else:
             splitted = region.split('/')
-            
+
         locations.append(splitted[len(splitted)-1])
-    
+
     return locations
 
 def split_by_locations(files_generator, locations):
@@ -44,7 +44,7 @@ def split_by_locations(files_generator, locations):
 
     for i in range(len(locations)):
         batch = []
-        
+
         for j in range(l):
             f = gen[j]
             if locations[i] in f:
@@ -65,7 +65,7 @@ def percentage_wrong_values_s1(s1_image, treshold = 170):
     for i in range(len(data)):
         if data[i] > treshold:
             wrong_values_amount = wrong_values_amount + 1
-    
+
     wrong_values_percentage = (wrong_values_amount/len(data))*100
     return wrong_values_percentage
 
@@ -85,7 +85,7 @@ def percentage_wrong_values_s2(s2_image, black_treshold=1, white_treshold=125):
         if r[i] >= white_treshold and g[i] >= white_treshold and b[i] >= white_treshold:
             white_values_amount = white_values_amount + 1
 
-    
+
     wrong_values_percentage = (wrong_values_amount/l)*100
     white_values_percentage = (white_values_amount/l)*100
 
@@ -123,7 +123,7 @@ def read_image(path, satellite):
 def clean_s1(s1_path, date_names, windows):
     file_generator = find(s1_path,  windows)
     locations = get_locations(s1_path, windows)
-    locations_genenerator = iter(split_by_locations(file_generator, locations))    
+    locations_genenerator = iter(split_by_locations(file_generator, locations))
 
     for i in range(0,len(locations)):
         scene = next(locations_genenerator)
@@ -147,12 +147,12 @@ def clean_s1(s1_path, date_names, windows):
                     #prev_wrong_score = wrong_score
                 wrong_score = percentage_wrong_values_s1(image)
                 print('         * B: ', wrong_score, ' Prev B: ', prev_wrong_score)
-                
-                if wrong_score <= prev_wrong_score:     
+
+                if wrong_score <= prev_wrong_score:
                     best_image = path
                     prev_wrong_score = wrong_score
 
-                
+
                 print('         * Best image: ' + best_image)
 
             for k in range(len(date)):
@@ -167,7 +167,7 @@ def clean_s2(s2_path, date_names, windows):
     file_generator = find(s2_path,  windows)
     locations = get_locations(s2_path, windows)
 
-    locations_genenerator = iter(split_by_locations(file_generator, locations))    
+    locations_genenerator = iter(split_by_locations(file_generator, locations))
 
     for i in range(0,len(locations)):
         scene = next(locations_genenerator)
@@ -183,10 +183,10 @@ def clean_s2(s2_path, date_names, windows):
             # rgb_start = 0
             for k in range(0, len(date)):
                 path = date[k]
-                
+
                 if ('RGB' in path):
                     image = read_image(path, 'sen2')
-                    
+
                     #if k==0:
                     #if rgb_start == 0:
                     #    prev_wrong_score, prev_white_score = percentage_wrong_values_s2(image)
@@ -197,11 +197,11 @@ def clean_s2(s2_path, date_names, windows):
                     #    rgb_start = 1
                     #else:
                     wrong_score, white_score = percentage_wrong_values_s2(image)
-                    
+
                     print('         * W: ', white_score, ' Prev W: ', prev_white_score, ' B: ', wrong_score, ' Prev B: ', prev_wrong_score)
                     # If the current image presents less wrong values then the previous one
                     # set the the current images as the best image
-                    #if wrong_score <= prev_wrong_score: 
+                    #if wrong_score <= prev_wrong_score:
                     #    best_image = path
                     #    prev_wrong_score = wrong_score
                     # If the current image presents less white values then the previous one
@@ -209,14 +209,14 @@ def clean_s2(s2_path, date_names, windows):
                     if white_score <= prev_white_score:
                         best_image = path
                         prev_white_score = white_score
-                        
-                    
+
+
                     print('         * Best image: ' + best_image)
-                        
+
 
             # Save the best image and remove the other images
             for k in range(0, len(date)):
-                
+
                 if not(date[k] == best_image):
                     if not ('image_CM_' in date[k]):
                         os.remove(date[k])
@@ -239,6 +239,6 @@ def clean(s2_path, s1_path, date_names, windows):
     clean_s2(s2_path, date_names, windows)
     print('   # Sentinel-1 data cleaning')
     clean_s1(s1_path, date_names, windows)
-    
-    
+
+
     print('   # Data cleaned')

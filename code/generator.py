@@ -22,10 +22,7 @@ def get_land_coordinates(number = 500, gui=False):
     '''
     
     i = 0
-    points = np.zeros((2,number))
-    if gui:
-        from progress_bar import progress_bar
-        pb =  progress_bar('Generation of new points...', number)
+    points = np.zeros((3,number))
 
     while i<number:
         lat, lon = new_point()
@@ -35,10 +32,6 @@ def get_land_coordinates(number = 500, gui=False):
             points[0, i] = lat
             points[1, i] = lon
             i = i + 1
-            if gui:
-                pb.update()
-    if gui:
-        pb.close()
     
     print('   # Points generated')
 
@@ -50,8 +43,9 @@ def save_points(points, path = './points.csv'):
     '''
     lat = points[0,:]
     lon = points[1,:]
-    points_to_save = {'Latitude':lat, 'Longitude':lon}
-    globe_points = DataFrame(points_to_save)
+    state = points[2,:]
+    points_to_save = {'Latitude':lat, 'Longitude':lon, 'State':state}
+    globe_points = DataFrame(data = points_to_save)
     globe_points.to_csv(path)
 
     print('   # Points saved')
@@ -71,5 +65,28 @@ def load_points(path = './points.csv'):
         points[1,i] = data[i][1]
 
     print('   # Points loaded')
+    
+    return points
+
+def get_new_points(n_of_scene, points_path):
+    
+    df = pd.read_csv(points_path)
+    df = df.drop(columns=['Unnamed: 0'])
+    data = df.to_numpy()
+    data = np.transpose(data)
+
+    points = np.zeros((2, n_of_scene))
+    j = 0
+    counter = 0
+    while j<n_of_scene:
+        if data[2][counter] == 1 or data[2][counter] == 2 or data[2][counter] == 3:
+            counter = counter + 1
+        elif data[2][counter] == 0:
+            data[2][counter] = 1
+            points[0,j] = data[0,counter]
+            points[1,j] = data[1,counter]
+            j = j + 1
+            
+    save_points(data, points_path)
     
     return points

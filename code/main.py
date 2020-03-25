@@ -2,16 +2,16 @@ import utils
 # If you are using windows set to True
 # If you are using macos set to False
 
-windows =    True
+windows =    False
 
-generate =   False
-download =   False
+generate =   True
+download =   True
 # ~~~~~~ Converter ~~~~~~
 convert_s2 = False
 convert_s1 = False
 # ~~~~~~ Cleaner ~~~~~~
 clean_s2 =   False
-clean_s1 =   False
+clean_s1 =   False                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 
 utils.print_components_menu(generate, download, convert_s2 or convert_s1, clean_s1 or clean_s2, windows)
 # ------------------------------------------------- GENERATOR -------------------------------------------------
@@ -22,7 +22,7 @@ utils.print_generator_menu(n_of_points)
 if windows:
     points_path = 'C:\\Users\\Phicollaborator\\Desktop\\downloader_tool\\code\\points.csv'
 else:
-    points_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/points.csv'
+    points_path = '/home/sebbyraft/Desktop/downloader_tool/code/points.csv'
 
 # --------------------------------------------- GENERATOR EXECUTION -------------------------------------------
 if generate:
@@ -32,7 +32,7 @@ if generate:
 else:
     import generator
     points = generator.load_points(points_path)
-
+                                                                                                                                                                        
 # ------------------------------------------------- DOWNLOADER ------------------------------------------------
 # ----------------------------------------------- USER SETTINGS -----------------------------------------------
 if windows:
@@ -41,10 +41,10 @@ if windows:
     sen2_images_base_path = 'C:\\Users\\Phicollaborator\\Desktop\\downloader_tool\\code\\data\\sen2\\'
     sen1_images_base_path = 'C:\\Users\\Phicollaborator\\Desktop\\downloader_tool\\code\\data\\sen1\\'
 else:
-    download_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/download'
+    download_path = '/home/sebbyraft/Desktop/downloader_tool/code/download'
     downloads_folder_path = download_path+'/*'
-    sen2_images_base_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/data/sen2/'
-    sen1_images_base_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/data/sen1/'
+    sen2_images_base_path = '/home/sebbyraft/Desktop/downloader_tool/code/data/sen2/'
+    sen1_images_base_path = '/home/sebbyraft/Desktop/downloader_tool/code/data/sen1/'
 
 start_date = ['2018-01-01','2018-02-01','2018-03-01','2018-04-01','2018-05-01','2018-06-01','2018-07-01','2018-08-01','2018-09-01','2018-10-01','2018-11-01','2018-12-01']
 end_date =   ['2018-01-28','2018-02-28','2018-03-28','2018-04-28','2018-05-28','2018-06-28','2018-07-28','2018-08-28','2018-09-28','2018-10-28','2018-11-28','2018-12-28']
@@ -52,7 +52,7 @@ date_names = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
 n_images = 3
 s2_selectors = ["B2", "B3", "B4", "QA60"]
 s1_selectors = ["VV"]
-n_of_scene = 5
+n_of_scene = 40
 patch_size = 10 #km
 
 utils.print_downloader_menu(downloads_folder_path, download_path, sen2_images_base_path, sen1_images_base_path, start_date, end_date, date_names, n_images, s2_selectors, s1_selectors, n_of_scene, patch_size)
@@ -94,8 +94,8 @@ if windows:
     s2_path = 'C:\\Users\\Phicollaborator\\Desktop\\downloader_tool\\code\\dataset\\sen2\\*'
     s1_path = 'C:\\Users\\Phicollaborator\\Desktop\\downloader_tool\\code\\dataset\\sen1\\*'
 else:
-    s2_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/dataset/sen2/*'
-    s1_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/dataset/sen1/*'
+    s2_path = '/home/sebbyraft/Desktop/downloader_tool/code/dataset/sen2/*'
+    s1_path = '/home/sebbyraft/Desktop/downloader_tool/code/dataset/sen1/*'
 
 utils.print_cleaner_menu(s2_path, s1_path)
 # --------------------------------------------- CLEANER EXECUTION ---------------------------------------------

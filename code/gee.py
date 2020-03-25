@@ -85,6 +85,7 @@ def get_s1_data_from_gge(rectangle, start_date, end_date, selectors = ["VV"]):
     dataset = ee.ImageCollection("COPERNICUS/S1_GRD").filterBounds(patch).filterDate(start_date,end_date).sort('system:time_start', True)
     # The final product will contains 4 bands, the RGB bands and the QA60 band
     dataset = dataset.select(selectors)
+    #dataset = dataset.filter(ee.Filter.eq('orbitProperties_pass','ASCENDING'))
     data = dataset.toList(dataset.size())
 
     return data

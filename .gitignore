@@ -1,3 +1,5 @@
+.vscode
+
 code/__pycache__
 code/cleaner.py
 code/converter.py
@@ -8,6 +10,7 @@ code/dataset_preview.py
 code/dataset_preview_2.py
 code/main_gui.py
 
+gui_code/__pycache__
 gui_code/dataset/sen1/zone_4
 gui_code/dataset/sen1/zone_7_a
 gui_code/dataset/sen1/zone_7_b
@@ -19,3 +22,5 @@ gui_code/dataset/sen2/zone_7_a
 gui_code/dataset/sen2/zone_7_b
 gui_code/dataset/sen2/zone_10
 gui_code/dataset/sen2/zone_11
+
+downloader

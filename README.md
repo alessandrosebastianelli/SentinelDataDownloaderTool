@@ -5,7 +5,7 @@
 ## 3. Add gui code
 
 # Dataset creation tool
-###### By Alessandro Sebastianelli and Maria Pia Del Rosso
+###### By Alessandro Sebastianelli
 ## Introduction
 
 This software has been created to give an easiest way to create datasets of satellites data. 
@@ -18,7 +18,7 @@ The software is composed of 4 main parts:
 - **Converter**: it converts the raw data in png files
 - **Cleaner**: it removes corrupted data and cloudy images
 
-###### For more information please contact: alessandro.sebastianelli1995@gmail.com or mariapia.delrosso@gmail.com
+###### For more information please contact: alessandro.sebastianelli1995@gmail.com
 
 # User manual
 

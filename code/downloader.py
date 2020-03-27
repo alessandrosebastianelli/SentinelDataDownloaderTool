@@ -49,16 +49,15 @@ def data_extractor(path, zone_name, date, downloads_folder_path, windows):
     # It tries to extract all the downloaded image into a folder
     for i in range(len(names)):
         if windows == True:
-            #print(names)
             f = names[i].split('.')[0].split('\\')
-            #print(f)
             fn = f[len(f)-1]
-            pos = path+zone_name+'\\'+date+'\\'+fn
-            #print(pos)
+            #pos = path+zone_name+'\\'+date+'\\'+fn
+            pos = os.path.join(path+zone_name, os.path.join(date, fn))
         else:
             f = names[i].split('.')[0].split('/')
             fn = f[len(f)-1]
-            pos = path+zone_name+'/'+date+'/'+fn
+            #pos = path+zone_name+'/'+date+'/'+fn
+            pos = os.path.join(path+zone_name, os.path.join(date, fn))
 
         os.makedirs(pos, exist_ok=True)
         try:

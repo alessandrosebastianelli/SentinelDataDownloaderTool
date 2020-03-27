@@ -9,6 +9,7 @@ code/progress_bar.py
 code/dataset_preview.py
 code/dataset_preview_2.py
 code/main_gui.py
+code/downloader_old.py
 
 gui_code/__pycache__
 gui_code/dataset/sen1/zone_4

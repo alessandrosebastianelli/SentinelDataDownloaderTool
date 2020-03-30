@@ -1,22 +1,24 @@
-# This is an old version of the manual, updating is required
+
 ## Action needed:
-## 1. Code cleaning (some scripts must be better written and path management for the various operating systems must be fixed.
-## 2. Add patch extractor code
-## 3. Add gui code
+- [ ] Code cleaning (some scripts must be better written and path management for the various operating systems must be fixed.
+- [ ] Add patch extractor code
+- [X] Add gui code
+- [ ] Update manual
 
 # Dataset creation tool
+![](tool_output.png)
 ###### By Alessandro Sebastianelli
 ## Introduction
 
+![](dataset_creation_tool.png)
+
 This software has been created to give an easiest way to create datasets of satellites data. 
 
-## Components
-The software is composed of 4 main parts:
-
-- **Generator**: it generates points, with longitude and latitude, distributed over the Earth surface
-- **Downloader**: it downloads from Google Earth Engine Sentinel-1 and Sentinel-2 images with a specified size and specified bands. It uses the coordinates preaviously generated
-- **Converter**: it converts the raw data in png files
-- **Cleaner**: it removes corrupted data and cloudy images
+- The **generator** generates random points, with longitude and latitude, distributed over the Earth surface. Since Sentinels do not acquire data on water bodies, it was necessary to introduce a water masking function into the generation process. The water mask allows identifying and delimiting water-rich areas of the Earth at a certain resolution. To generate the points  two random variables with uniform distribution were used: for the latitude the range was (-56, 84), because Sentinel-2 does not acquire data outside of this interval, instead for the longitude where there are no constraints, the interval (-180, 180) was chosen. At each iteration a point is generated, and through the water mask it is verified if the point is on the  solid land; if so, the point is saved,  if not, it is dumped and the next one generated.
+- The **downloader** takes care of downloading the images from the coordinates previously generated and from the date in which the time series is to be started. By default the script will try to download a one-year time series, with a monthly interval. For each month three Sentinel-1 images and three Sentinel-2 images are downloaded; this number was chosen to guarantee at least one image for each satellite that is in optimal conditions of light, cloud coverage, etc. The software is also designed to organize data in a hierarchical folder structure.
+- The **converter**  mainly deals with taking raw data, which typically have a .tif extension, and converting them into arrays. For Sentinel-1 products the converter first standardizes or normalizes the data to bring them into a range suitable for machine learning purposes. For Sentinel-2 products, the converter normalizes or standardizes the data, then through the RGB bands it builds a color image.
+- The **cleaner** mainly deals with selecting for each satellite, for each region, for each date, the best image available among the three downloaded. Using the 3 images (default value) per month the cleaner selects the best image for each month. In fact there are some ”errors” in the downloaded data. For example some Sentinel-1 downloaded data present some areas with invalid values. Some Sentinel-2 downloaded data present the same problem but in addition there can be images with relevant cloud coverage. For the missing parts the software uses a threshold, for the clouds detection the user can select a cloud masking method.
+- The **patch extractor** is an add-on that extracts precisely from the final image under smaller images to increase the samples in the dataset. It is optional because, as in the case of landslides, a landslide is typically centered in the image and therefore a patch extraction would result in the loss of information
 
 ###### For more information please contact: alessandro.sebastianelli1995@gmail.com
 
@@ -25,7 +27,7 @@ The software is composed of 4 main parts:
 To use the software run ***main.py***.
 
 ### Required packages
-The code has been written in Python 3.6. You can easly install the following packages by running:
+The code has been written in Python 3.6.8. You can easly install the following packages by running:
 
 ~~~
 pip install <name of package>
@@ -42,27 +44,19 @@ pip install <name of package>
 - imageio
 - scikit-image
 - rasterio
+- geopandas
+- descartes
 
 ## Main settings
-First of all you have to specify the type of operative system you use (Windows and MacOS are supported). If you use **Windows** set:
-
-~~~python
-windows = True
-~~~
-
-If you use **MacOS** set:
-
-~~~python
-windows = False
-~~~
-
 You can activate or deactivate the components. For example with these settings:
 
 ~~~python
-generate = True
-download = True
-convert = True
-clean = True
+generate   = True
+download   = True
+convert_s2 = True
+convert_s1 = True
+clean_s2   = True
+clean_s1   = True
 ~~~	
 
 all the components are activated. In this way you can split the workflow. **Keep attention!!! The order of the workflow (generator, downloader, converter and cleaner) must not be changed.**
@@ -118,10 +112,10 @@ At this point you should have this structure:
 After that you have to change the path settings in the code:
 
 ~~~python
-downloads_folder_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/download/*'
-download_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/download'
-sen2_images_base_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/data/sen2/'
-sen1_images_base_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/data/sen1/'
+download_path = '/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/code/download'
+downloads_folder_path = download_path+'/*'
+sen2_images_base_path = '/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/code/data/sen2/'
+sen1_images_base_path = '/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/code/data/sen1/'
 ~~~  
 
 **Keep attention!!! You should change the existing paths using the whole paths of the folders previously created. Keep attention on the type of operative system you use.** For example if you use Windows you should set:
@@ -189,15 +183,6 @@ patch_size_meter = patch_size*1000
 patch_size_in_pixel = int(patch_size_meter/resolution)
 ~~~
 
-You have to change the path setting into the code:
-
-~~~python
-s2_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/data/sen2/*'
-s1_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/data/sen1/*'
-~~~  
-
-**Keep attention!!! You should change the existing paths using the whole paths of the data folders. Keep attention on the type of operative system you use.**
-
 ## Cleaner
 
 You have to change only the paths setting into the code:
@@ -208,7 +193,7 @@ s1_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/dataset/s
 ~~~
 **Keep attention!!! You should change the existing paths using the whole paths of the dataset folders. Keep attention on the type of operative system you use.**
 
-###### Please report us any issue.
+###### Please report me any issue.
 
 
 

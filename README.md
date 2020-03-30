@@ -5,7 +5,7 @@
 - [X] Add gui code
 - [ ] Update manual
 
-# Dataset creation tool
+# Sentinel Data Downloader Tool
 ![](tool_output.png)
 ###### By Alessandro Sebastianelli
 ## Introduction

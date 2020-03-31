@@ -7,7 +7,7 @@
 - [X] Add manual cleaner 
 - [X] Create GUI
 - [ ] Manual Cleaner to widget 
-- [ ] Integrate functionalities into GUI
+- [ ] Add functionalities to GUI
 - [ ] Testing
 
 # Sentinel Data Downloader Tool

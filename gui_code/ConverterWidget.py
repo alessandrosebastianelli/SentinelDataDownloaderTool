@@ -36,7 +36,7 @@ class ConverterWidget:
     self.convert_button.grid(row=2, column=1, sticky=tk.E)
 
     normalization_type_label = tk.Label(converter_sub_frame_2, text='Normalization type', font=self.helv16)
-    normalization_type_label.grid(row=2, column=2)
+    normalization_type_label.grid(row=2, column=2, sticky=tk.E)
     
     self.normalization_var.set(self.normalization_types[0])
     normalization_menu = tk.OptionMenu(converter_sub_frame_2, self.normalization_var, *self.normalization_types)
@@ -44,11 +44,11 @@ class ConverterWidget:
     normalization_menu.grid(row=2, column=3)
 
     output_type_label = tk.Label(converter_sub_frame_2, text='Output type', font=self.helv16)
-    output_type_label.grid(row=3, column=2)
+    output_type_label.grid(row=3, column=2, sticky=tk.E)
     
     self.output_var.set(self.output_types[0])
     output_menu = tk.OptionMenu(converter_sub_frame_2, self.output_var, *self.output_types)
     output_menu.config(width=15, font=self.helv16)
-    output_menu.grid(row=3, column=3)
+    output_menu.grid(row=3, column=3, sticky=tk.E)
 
 

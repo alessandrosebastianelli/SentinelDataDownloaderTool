@@ -34,15 +34,15 @@ class PatchExtractorWidget:
     self.extractor_button.grid(row=2, column=1, sticky=tk.E)
 
     extractor_x_label = tk.Label(extractor_sub_frame_2, text='Size x axis', font=self.helv16)
-    extractor_x_label.grid(row=2, column=2)
+    extractor_x_label.grid(row=2, column=2, sticky=tk.E)
     
     self.extractor_x_area = tk.Entry(extractor_sub_frame_2, textvariable=self.extractor_x_size, width=10, font=self.helv16, borderwidth=1, relief="solid")
-    self.extractor_x_area.grid(row=2, column=3)
+    self.extractor_x_area.grid(row=2, column=3, sticky=tk.E)
 
     extractor_y_label = tk.Label(extractor_sub_frame_2, text='Size y axis', font=self.helv16)
-    extractor_y_label.grid(row=2, column=4)
+    extractor_y_label.grid(row=2, column=4, sticky=tk.E)
     
     self.extractor_y_area = tk.Entry(extractor_sub_frame_2, textvariable=self.extractor_y_size, width=10, font=self.helv16, borderwidth=1, relief="solid")
-    self.extractor_y_area.grid(row=2, column=5)
+    self.extractor_y_area.grid(row=2, column=5, sticky=tk.E)
 
 

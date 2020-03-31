@@ -216,11 +216,28 @@ Menu bar:
 Main window:
 
 - **Generator**:
+	- Number of points
+	- Generate
+	- Load
+	- Get new
 - **Downloader**:
+	- Number of images
+	- Date definition
+	- Band definition
+	- Download 
 - **Converter**:
+	- Normalization type
+	- Output type
+	- Convert
 - **Cleaner**:
+	- Clean
+	- Manual clean	 	
 - **Extractor**:
+	- Size x axis
+	- Size y axis
+	- Extract
 - **Automatic**:
+	- Start 
 
 # Add-on
 ## Manual cleaner

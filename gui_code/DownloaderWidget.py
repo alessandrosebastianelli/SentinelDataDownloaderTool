@@ -35,27 +35,27 @@ class DownloaderWidget:
     downloader_sub_frame_2.grid(row=2, column=1, sticky=tk.E)
 
     n_of_images_label = tk.Label(downloader_sub_frame_2, text='Number of images', font=self.helv16)
-    n_of_images_label.grid(row=2, column=1)
+    n_of_images_label.grid(row=2, column=1, sticky=tk.E)
     self.n_of_images_area = tk.Entry(downloader_sub_frame_2, textvariable=self.number_of_images, width=10, font=self.helv16, borderwidth=1, relief="solid")
-    self.n_of_images_area.grid(row=2, column=2)
+    self.n_of_images_area.grid(row=2, column=2, sticky=tk.E)
 
     date_def_label = tk.Label(downloader_sub_frame_2, text='Date definition', font=self.helv16)
-    date_def_label.grid(row=2, column=3)
+    date_def_label.grid(row=2, column=3, sticky=tk.E)
     
     self.date_var.set(self.date_options[0])
     date_menu = tk.OptionMenu(downloader_sub_frame_2, self.date_var, *self.date_options)
     date_menu.config(width=15, font=self.helv16)
-    date_menu.grid(row=2, column=4)
+    date_menu.grid(row=2, column=4, sticky=tk.E)
 
     self.download_button = tk.Button(downloader_sub_frame_2, text='DOWNLOAD', height=1, width=15, font=self.helv16, command = None)
     self.download_button.grid(row=3, column=1, sticky=tk.E)
 
     band_def_label = tk.Label(downloader_sub_frame_2, text='Band definition', font=self.helv16)
-    band_def_label.grid(row=3, column=3)
+    band_def_label.grid(row=3, column=3, sticky=tk.E)
     
     self.band_var.set(self.band_options[0])
     band_menu = tk.OptionMenu(downloader_sub_frame_2, self.band_var, *self.band_options)
     band_menu.config(width=15, font=self.helv16)
-    band_menu.grid(row=3, column=4)
+    band_menu.grid(row=3, column=4, sticky=tk.E)
 
 

@@ -8,6 +8,7 @@ class GeneratorWidget:
     self.root = root
     self.helv16 = TkFont.Font(self.root, family="Helvetica",size=16)
     self.helv22 = TkFont.Font(self.root, family="Helvetica",size=26)
+    self.number_of_points = tk.StringVar(root, value='1000')
     self.createGUI(self.root)
 
   def createGUI(self, root):
@@ -31,7 +32,7 @@ class GeneratorWidget:
     self.n_of_points_label = tk.Label(generator_sub_frame_2, text='Number of points', font=self.helv16)
     self.n_of_points_label.grid(row=2, column=1)
 
-    self.n_of_points_area = tk.Entry(generator_sub_frame_2, width=10, font=self.helv16, borderwidth=1, relief="solid")
+    self.n_of_points_area = tk.Entry(generator_sub_frame_2, textvariable=self.number_of_points, width=10, font=self.helv16, borderwidth=1, relief="solid")
     self.n_of_points_area.grid(row=2, column=2)
 
     self.generate_button = tk.Button(generator_sub_frame_2, text='GENERATE', height=1, width=15, font=self.helv16, command = None)

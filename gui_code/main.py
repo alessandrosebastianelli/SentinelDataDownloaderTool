@@ -12,9 +12,10 @@ from DownloaderWidget import *
 from ConverterWidget import *
 from CleanerWidget import *
 from PatchExtractorWidget import *
+from AutomaticToolWidget import *
 
 root = tk.Tk()
-root.geometry('650x600')
+root.geometry('650x700')
 root.title('Sentinel Data Downloader Tool')
 root.resizable(False, False)
 helv16 = TkFont.Font(root, family="Helvetica",size=16)#,weight="bold")
@@ -41,6 +42,7 @@ downloaderWidget = DownloaderWidget(root)
 converterWidget  = ConverterWidget(root)
 cleanerWidget = CleanerWidget(root)
 patchextractorWidget = PatchExtractorWidget(root)
+automatictoolWidget = AutomaticToolWidget(root)
 
 
 #sep = Separator(root, orient="horizontal")

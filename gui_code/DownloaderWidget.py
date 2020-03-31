@@ -10,6 +10,7 @@ class DownloaderWidget:
     self.helv22 = TkFont.Font(self.root, family="Helvetica",size=26)
     self.date_var = tk.StringVar(self.root)
     self.band_var = tk.StringVar(self.root)
+    self.number_of_images = tk.StringVar(root, value='3')
     self.band_options = ["RGB+QA60"]
     self.date_options = ["Jan-Dec"]
 
@@ -33,9 +34,9 @@ class DownloaderWidget:
     downloader_sub_frame_2 = tk.Frame(downloader_frame)
     downloader_sub_frame_2.grid(row=2, column=1, sticky=tk.E)
 
-    n_of_images_label = tk.Label(downloader_sub_frame_2, text='Number of iamges', font=self.helv16)
+    n_of_images_label = tk.Label(downloader_sub_frame_2, text='Number of images', font=self.helv16)
     n_of_images_label.grid(row=2, column=1)
-    self.n_of_images_area = tk.Entry(downloader_sub_frame_2, width=10, font=self.helv16, borderwidth=1, relief="solid")
+    self.n_of_images_area = tk.Entry(downloader_sub_frame_2, textvariable=self.number_of_images, width=10, font=self.helv16, borderwidth=1, relief="solid")
     self.n_of_images_area.grid(row=2, column=2)
 
     date_def_label = tk.Label(downloader_sub_frame_2, text='Date definition', font=self.helv16)

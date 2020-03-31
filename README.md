@@ -1,10 +1,13 @@
 
-## Action needed:
+## Work in progress, actions needed:
 - [ ] Code cleaning (some scripts must be better written and path management for the various operating systems must be fixed.
 - [ ] Add patch extractor code
 - [X] Add GUI code
 - [ ] Update manual
 - [X] Add manual cleaner 
+- [X] Create GUI
+- [ ] Integrate functionalities into the GUI
+- [ ] Testing
 
 # Sentinel Data Downloader Tool
 
@@ -200,6 +203,24 @@ s1_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/dataset/s
 
 # Use of the software through GUI
 
+![](tool_gui.png)
+
+Menu bar:
+
+- **File**:
+- **Settings**:
+- **Authentication**:
+- **Preview**:
+- **World Map**
+
+Main window:
+
+- **Generator**:
+- **Downloader**:
+- **Converter**:
+- **Cleaner**:
+- **Extractor**:
+- **Automatic**:
 
 # Add-on
 ## Manual cleaner

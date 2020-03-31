@@ -12,16 +12,16 @@ code/main_gui.py
 code/downloader_old.py
 
 gui_code/__pycache__
-gui_code/dataset/sen1/zone_4
-gui_code/dataset/sen1/zone_7_a
-gui_code/dataset/sen1/zone_7_b
-gui_code/dataset/sen1/zone_10
-gui_code/dataset/sen1/zone_11
+dataset_sample/sen1/zone_4
+dataset_sample/sen1/zone_7_a
+dataset_sample/sen1/zone_7_b
+dataset_sample/sen1/zone_10
+dataset_sample/sen1/zone_11
 
-gui_code/dataset/sen2/zone_4
-gui_code/dataset/sen2/zone_7_a
-gui_code/dataset/sen2/zone_7_b
-gui_code/dataset/sen2/zone_10
-gui_code/dataset/sen2/zone_11
+dataset_sample/sen2/zone_4
+dataset_sample/sen2/zone_7_a
+dataset_sample/sen2/zone_7_b
+dataset_sample/sen2/zone_10
+dataset_sample/sen2/zone_11
 
 downloader

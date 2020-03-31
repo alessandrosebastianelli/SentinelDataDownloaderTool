@@ -2,11 +2,13 @@
 ## Action needed:
 - [ ] Code cleaning (some scripts must be better written and path management for the various operating systems must be fixed.
 - [ ] Add patch extractor code
-- [X] Add gui code
+- [X] Add GUI code
 - [ ] Update manual
 
 # Sentinel Data Downloader Tool
+
 ![](tool_output.png)
+
 ###### By Alessandro Sebastianelli
 ## Description
 This tool has been designed to build datasets for machine learning  and  deep learning applications in a simple and automatic way. A set of scripts allows the user to automatically download images from the Google Earth Engine. The parameters to be set are a few and among these there are the coordinates of the area of interest, the dates, the data bands,the number of images. As one can see from the figure below, the tool is composed of several functional blocks, each dealing with a particular task.

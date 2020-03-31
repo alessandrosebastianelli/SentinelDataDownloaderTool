@@ -4,11 +4,11 @@ import utils
 
 windows =    False
 
-generate =   True
-download =   True
+generate =   False
+download =   False
 # ~~~~~~ Converter ~~~~~~
-convert_s2 = False
-convert_s1 = False
+convert_s2 = True
+convert_s1 = True
 # ~~~~~~ Cleaner ~~~~~~
 clean_s2 =   False
 clean_s1 =   False                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
@@ -43,8 +43,8 @@ if windows:
 else:
     download_path = '/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/code/download'
     downloads_folder_path = download_path+'/*'
-    sen2_images_base_path = '/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/code/data/sen2/'
-    sen1_images_base_path = '/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/code/data/sen1/'
+    sen2_images_base_path = '/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/data/sen2/'
+    sen1_images_base_path = '/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/data/sen1/'
 
 start_date = ['2018-01-01','2018-02-01','2018-03-01','2018-04-01','2018-05-01','2018-06-01','2018-07-01','2018-08-01','2018-09-01','2018-10-01','2018-11-01','2018-12-01']
 end_date =   ['2018-01-28','2018-02-28','2018-03-28','2018-04-28','2018-05-28','2018-06-28','2018-07-28','2018-08-28','2018-09-28','2018-10-28','2018-11-28','2018-12-28']

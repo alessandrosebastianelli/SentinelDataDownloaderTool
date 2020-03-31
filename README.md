@@ -6,7 +6,8 @@
 - [ ] Update manual
 - [X] Add manual cleaner 
 - [X] Create GUI
-- [ ] Integrate functionalities into the GUI
+- [ ] Manual Cleaner to widget 
+- [ ] Integrate functionalities into GUI
 - [ ] Testing
 
 # Sentinel Data Downloader Tool

@@ -4,6 +4,7 @@
 - [ ] Add patch extractor code
 - [X] Add GUI code
 - [ ] Update manual
+- [X] Add manual cleaner 
 
 # Sentinel Data Downloader Tool
 
@@ -196,44 +197,21 @@ s1_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/dataset/s
 ~~~
 **Keep attention!!! You should change the existing paths using the whole paths of the dataset folders. Keep attention on the type of operative system you use.**
 
+
+# Add-on
+## Manual cleaner
+
+It is an additional component that performs the same function as the cleaner but not automatically. It can be used to manually filter images.
+
+![](manual_cleaner.png)
+
+The interactive components are:
+
+- SET PATH: it is the first thing to do to use the software. After clicking the button a dialog box will ask for the location of the dataset (sentinel 1 or sentinel 2)
+- CLOUD MASK: if you are analyzing Sentinel 2 images then the cloud mask buttons will enable the cloud mask on the corresponding images.
+- KEEP: The selection buttons allow which image to keep in the dataset and consequently which ones to delete.
+- NEXT: effectively deletes the images, after asking for confirmation, and loads the new data to be analyzed.
+
+**Please note that if there are not enough images, a white (S2) or purple (S1) image will be shown**
+
 ###### Please report me any issue.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

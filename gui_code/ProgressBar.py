@@ -21,7 +21,7 @@ class ProgressBar:
         self.progressbar["maximum"]= self.maxValue
 
     def progress(self, currentValue):
-         self.progressbar["value"]=currentValue
+        self.progressbar["value"]=currentValue
 
     def update(self):
         self.currentValue= self.currentValue+1

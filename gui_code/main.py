@@ -18,7 +18,6 @@ root.resizable(False, False)
 helv16 = TkFont.Font(root, family="Helvetica",size=16)#,weight="bold")
 helv22 = TkFont.Font(root, family="Helvetica",size=26)#,weight="bold")
 
-
 menubarWidget = MenuBarWidget(root)
 generatorWidget  = GeneratorWidget(root)
 downloaderWidget = DownloaderWidget(root)

@@ -12,10 +12,9 @@ import os
 import image_loader
 
 class PreviewWidget(Frame):
-    def __init__(self,master,label="",**kw):
-        Frame.__init__(self,master)
-        self.root = master
-        self.configure(**kw)
+    def __init__(self,root):
+        Frame.__init__(self,root)
+        self.root = root
         self.preview_window = None
 
         s2_paths, s2_zones = image_loader.get_images_path('/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/dataset_sample/', 'sen2')
@@ -31,6 +30,8 @@ class PreviewWidget(Frame):
         self.fig = Figure(figsize=(5, 5), dpi=100)
         self.S2_text = None
         self.S1_text = None
+
+        self.show_map()
 
     def create_plot(self):
         for i in range(8):
@@ -76,10 +77,11 @@ class PreviewWidget(Frame):
         
     def show_map(self):
         #----Create a new indipendent window from the root
-        self.preview_window = tk.Toplevel(self.master)
+        self.preview_window = tk.Toplevel(self.root)
         #----Set the "attention" on it
         self.preview_window .grab_set()
-        self.preview_window.geometry('1300x700')
+        m = self.root.maxsize()
+        self.preview_window.geometry('{}x{}+0+0'.format(*m))
         self.preview_window.title("Dataset Preview")
 
         self.preview_map  = FigureCanvasTkAgg(self.fig, master=self.preview_window)
@@ -89,8 +91,6 @@ class PreviewWidget(Frame):
         toolbar = NavigationToolbar2Tk(self.preview_map , self.preview_window)
         toolbar.update()
         self.preview_map.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)  
-
-        
 
         path_frame = tk.Frame(self.preview_window)
         path_frame.pack(side=tk.TOP)
@@ -128,7 +128,7 @@ class PreviewWidget(Frame):
         self.draw_map()
 
         #----When press the x button then destroy the child window
-        self.preview_window.protocol("WM_DELETE_WINDOW", self.quit)
+        #self.preview_window.protocol("WM_DELETE_WINDOW", self.quit)
 
     def quit(self):
         self.preview_window.destroy()

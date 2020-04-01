@@ -27,13 +27,13 @@ class GeneratorWidget:
 
     #------------------- GENERATOR SUB FRAME 2 -------------------
     generator_sub_frame_2 = tk.Frame(generator_frame)
-    generator_sub_frame_2.grid(row=2, column=1)
+    generator_sub_frame_2.grid(row=2, column=1, sticky=tk.E)
 
     self.n_of_points_label = tk.Label(generator_sub_frame_2, text='Number of points', font=self.helv16)
-    self.n_of_points_label.grid(row=2, column=1)
+    self.n_of_points_label.grid(row=2, column=1, sticky=tk.E)
 
     self.n_of_points_area = tk.Entry(generator_sub_frame_2, textvariable=self.number_of_points, width=10, font=self.helv16, borderwidth=1, relief="solid")
-    self.n_of_points_area.grid(row=2, column=2)
+    self.n_of_points_area.grid(row=2, column=2, sticky=tk.E)
 
     self.generate_button = tk.Button(generator_sub_frame_2, text='GENERATE', height=1, width=15, font=self.helv16, command = None)
     self.generate_button.grid(row=2, column=3, sticky=tk.E)

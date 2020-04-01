@@ -12,13 +12,13 @@
 
 # Sentinel Data Downloader Tool
 
-![](tool_output.png)
+![](readme_imgs/tool_output.png)
 
 ###### By Alessandro Sebastianelli
 ## Description
 This tool has been designed to build datasets for machine learning  and  deep learning applications in a simple and automatic way. A set of scripts allows the user to automatically download images from the Google Earth Engine. The parameters to be set are a few and among these there are the coordinates of the area of interest, the dates, the data bands,the number of images. As one can see from the figure below, the tool is composed of several functional blocks, each dealing with a particular task.
 
-![](dataset_creation_tool.png)
+![](readme_imgs/dataset_creation_tool.png)
 
 - The **generator** generates random points, with longitude and latitude, distributed over the Earth surface. Since Sentinels do not acquire data on water bodies, it was necessary to introduce a water masking function into the generation process. The water mask allows identifying and delimiting water-rich areas of the Earth at a certain resolution. To generate the points two random variables with uniform distribution were used: for the latitude the range was (-56, 84), because Sentinel-2 does not acquire data outside of this interval, instead for the longitude where there are no constraints, the interval (-180, 180) was chosen. At each iteration a point is generated, and through the water mask it is verified if the point is on the solid land; if so, the point is saved, if not, it is dumped and the next one generated.
 - The **downloader** takes care of downloading the images from the coordinates previously generated and from the date in which the time series is to be started. By default the script will try to download a one-year time series, with a monthly interval. For each month three Sentinel-1 images and three Sentinel-2 images are downloaded; this number was chosen to guarantee at least one image for each satellite that is in optimal conditions of light, cloud coverage, etc. The software is also designed to organize data in a hierarchical folder structure.
@@ -202,17 +202,20 @@ s1_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/dataset/s
 
 # Use of the software through GUI
 
-![](tool_gui.png)
+![](readme_imgs/tool_gui.png)
 
-Menu bar:
+## Menu bar:
 
 - **File**:
 - **Settings**:
 - **Authentication**:
-- **Preview**:
-- **World Map**
+- **Preview**: If pressed it will activate the view of the dataset, press next to iterate through the dataset.
+![](readme_imgs/DatasetPreview.png)
 
-Main window:
+- **World Map**: If pressed it will activate the view of the points generated on a map of the earth.
+![](readme_imgs/WorldMap.png)
+
+## Main window:
 
 - **Generator**:
 	- Number of points
@@ -243,7 +246,7 @@ Main window:
 
 It is an additional component that performs the same function as the cleaner but not automatically. It can be used to manually filter images.
 
-![](manual_cleaner.png)
+![](readme_imgs/manual_cleaner.png)
 
 The interactive components are:
 

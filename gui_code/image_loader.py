@@ -201,12 +201,13 @@ def image_generator(s2_paths, s1_paths, shape = (256,256), batch_size = 16, info
     
     batch_s2  = np.zeros((batch_size*4,shape[0], shape[1], 3))
     batch_s1 = np.zeros((batch_size*4,shape[0], shape[1], 1))
-    path_s2 = []
-    path_s1 = []
+    
     
     while True:   
         
-        counter = 0      
+        counter = 0    
+        path_s2 = []
+        path_s1 = []  
         for i in range(0, batch_size): 
             
             batch_index = randint(0, high=int(len(s2_paths)/4))*4

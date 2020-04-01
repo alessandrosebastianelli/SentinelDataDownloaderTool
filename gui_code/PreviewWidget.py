@@ -10,12 +10,15 @@ import numpy as np
 from matplotlib.figure import Figure
 import os
 import image_loader
+import tkinter.font as TkFont
 
 class PreviewWidget(Frame):
     def __init__(self,root):
         Frame.__init__(self,root)
         self.root = root
         self.preview_window = None
+        self.helv16 = TkFont.Font(self.root, family="Helvetica",size=16)
+        self.helv22 = TkFont.Font(self.root, family="Helvetica",size=26)
 
         s2_paths, s2_zones = image_loader.get_images_path('/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/dataset_sample/', 'sen2')
         s1_images, s1_zones = image_loader.get_images_path('/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/dataset_sample/', 'sen1')
@@ -70,10 +73,7 @@ class PreviewWidget(Frame):
         self.rgb, self.vv, self.rgb_path, self.vv_path = next(self.generator)
         self.create_plot()
         self.format_paths()
-
         self.preview_map.draw()
-        
-        
         
     def show_map(self):
         #----Create a new indipendent window from the root
@@ -95,15 +95,14 @@ class PreviewWidget(Frame):
         path_frame = tk.Frame(self.preview_window)
         path_frame.pack(side=tk.TOP)
 
-        next_button = tk.Button(path_frame, text="Next", font=("Helvetica", 14), command= self.draw_map)
+        next_button = tk.Button(path_frame, text="Next", height=2, width=15, font=self.helv16, command= self.draw_map)
+        
+        s2_path_label = tk.Label(path_frame, text='Sentinel-2 images paths: ', font=self.helv16) 
+        s1_path_label = tk.Label(path_frame, text='Sentinel-1 images paths: ', font=self.helv16) 
         
 
-        s2_path_label = tk.Label(path_frame, text='Sentinel-2 images paths: ', font=("Helvetica", 14)) 
-        s1_path_label = tk.Label(path_frame, text='Sentinel-1 images paths: ', font=("Helvetica", 14)) 
-        
-
-        self.S2_text = tk.Text(path_frame, height=4, width=50)
-        self.S1_text = tk.Text(path_frame, height=4, width=50)
+        self.S2_text = tk.Text(path_frame, height=4, width=50, font=self.helv16)
+        self.S1_text = tk.Text(path_frame, height=4, width=50, font=self.helv16)
 
         S2_scroll = tk.Scrollbar(path_frame)
         S2_scroll.config(command=self.S2_text.yview)

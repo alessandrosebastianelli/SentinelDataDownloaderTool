@@ -206,13 +206,14 @@ s1_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/dataset/s
 
 ## Menu bar:
 
-- **File**:
-- **Settings**:
-- **Authentication**:
-- **Preview**: If pressed it will activate the view of the dataset, press next to iterate through the dataset.
+- **ToDo - File**: gives access to the program files, such as the csv sheet with the points generated
+- **Settings**: allows you to change the tool settings, in particular for the automatic section
+- **Authentication**: allows authentication for google earth engine operation
+- **Preview**: If pressed it will activate the view of the dataset, press next to iterate through the dataset: 
+
 ![](readme_imgs/DatasetPreview.png)
 
-- **World Map**: If pressed it will activate the view of the points generated on a map of the earth.
+- **World Map**: If pressed it will activate the view of the points generated on a map of the Earth:
 ![](readme_imgs/WorldMap.png)
 
 ## Main window:

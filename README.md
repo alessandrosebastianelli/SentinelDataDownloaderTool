@@ -204,8 +204,7 @@ s1_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/dataset/s
 
 ![](readme_imgs/tool_gui.png)
 
-
-## Menu bar:
+## Menu bar:
 
 - **File**:
 - **Settings**:

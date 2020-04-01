@@ -67,7 +67,7 @@ clean_s1   = True
 ~~~	
 
 all the components are activated. In this way you can split the workflow. **Keep attention!!! The order of the workflow (generator, downloader, converter and cleaner) must not be changed.**
- 
+
 ## Generator
 You can define the number of points to be generated. The default number is:
 

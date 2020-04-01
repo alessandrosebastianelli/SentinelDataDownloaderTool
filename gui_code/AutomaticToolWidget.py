@@ -13,7 +13,7 @@ class AutomaticToolWidget:
   def createGUI(self, root):
     #----------------------- CLEANER FRAME ---------------------
     main_frame = tk.Frame(root)
-    main_frame.grid(row=6, column=1, sticky=tk.E, pady=15)
+    main_frame.grid(row=6, column=1, sticky=tk.E, pady=3)
 
     generator_label = tk.Label(main_frame, text='AUTOMATIC', font=self.helv22)
     generator_label.grid(row=1, column=1, sticky=tk.E)
@@ -43,7 +43,7 @@ class AutomaticToolWidget:
     self.extractor_progress = Progressbar(main_frame, orient=tk.HORIZONTAL, length=300, mode='determinate') 
     self.extractor_progress.grid(row=6, column=2, sticky=tk.E)
 
-    self.start_button = tk.Button(main_frame, text='START', height=1, width=15, font=self.helv16, command = None)
+    self.start_button = tk.Button(main_frame, text='START', height=2, width=15, font=self.helv16, command = None)
     self.start_button.grid(row=4, column=3, sticky=tk.E)
 
 

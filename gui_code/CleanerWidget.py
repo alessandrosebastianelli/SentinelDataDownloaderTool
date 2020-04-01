@@ -13,7 +13,7 @@ class CleanerWidget:
   def createGUI(self, root):
     #----------------------- CLEANER FRAME ---------------------
     cleaner_frame = tk.Frame(root)
-    cleaner_frame.grid(row=4, column=1, sticky=tk.E, pady=15)
+    cleaner_frame.grid(row=4, column=1, sticky=tk.E, pady=3)
     #-------------------- CLEANER SUB FRAME 1 ------------------
     cleaner_sub_frame_1 = tk.Frame(cleaner_frame)
     cleaner_sub_frame_1.grid(row=1, column=1, sticky=tk.E)
@@ -28,9 +28,9 @@ class CleanerWidget:
     cleaner_sub_frame_2 = tk.Frame(cleaner_frame)
     cleaner_sub_frame_2.grid(row=2, column=1, sticky=tk.E)
 
-    self.cleaner_button = tk.Button(cleaner_sub_frame_2, text='CLEAN', height=1, width=15, font=self.helv16, command = None)
+    self.cleaner_button = tk.Button(cleaner_sub_frame_2, text='CLEAN', height=2, width=15, font=self.helv16, command = None)
     self.cleaner_button.grid(row=2, column=1, sticky=tk.E)
-    self.manual_cleaner_button = tk.Button(cleaner_sub_frame_2, text='MANUAL CLEAN', height=1, width=15, font=self.helv16, command = None)
+    self.manual_cleaner_button = tk.Button(cleaner_sub_frame_2, text='MANUAL CLEAN', height=2, width=15, font=self.helv16, command = None)
     self.manual_cleaner_button.grid(row=2, column=2, sticky=tk.E)
 
 

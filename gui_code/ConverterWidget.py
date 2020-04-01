@@ -17,7 +17,7 @@ class ConverterWidget:
   def createGUI(self, root):
     #----------------------- CONVERTER FRAME ---------------------
     converter_frame = tk.Frame(root)
-    converter_frame.grid(row=3, column=1, sticky=tk.E, pady=15)
+    converter_frame.grid(row=3, column=1, sticky=tk.E, pady=3)
     #-------------------- CONVERTER SUB FRAME 1 ------------------
     converter_sub_frame_1 = tk.Frame(converter_frame)
     converter_sub_frame_1.grid(row=1, column=1, sticky=tk.E)
@@ -31,9 +31,6 @@ class ConverterWidget:
     #------------------- CONVERTER SUB FRAME 2 ------------------
     converter_sub_frame_2 = tk.Frame(converter_frame)
     converter_sub_frame_2.grid(row=2, column=1, sticky=tk.E)
-
-    self.convert_button = tk.Button(converter_sub_frame_2, text='CONVERT', height=1, width=15, font=self.helv16, command = None)
-    self.convert_button.grid(row=2, column=1, sticky=tk.E)
 
     normalization_type_label = tk.Label(converter_sub_frame_2, text='Normalization type', font=self.helv16)
     normalization_type_label.grid(row=2, column=2, sticky=tk.E)
@@ -51,4 +48,6 @@ class ConverterWidget:
     output_menu.config(width=15, font=self.helv16)
     output_menu.grid(row=3, column=3, sticky=tk.E)
 
+    self.convert_button = tk.Button(converter_sub_frame_2, text='CONVERT', height=2, width=15, font=self.helv16, command = None)
+    self.convert_button.grid(row=4, column=3, sticky=tk.E)
 

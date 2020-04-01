@@ -14,7 +14,7 @@ root.resizable(False, False)
 
 menubarWidget = MenuBarWidget(root)
 generatorWidget  = GeneratorWidget(root)
-downloaderWidget = DownloaderWidget(root)
+downloaderWidget = DownloaderWidget(root, generatorWidget)
 converterWidget  = ConverterWidget(root)
 cleanerWidget = CleanerWidget(root)
 patchextractorWidget = PatchExtractorWidget(root)

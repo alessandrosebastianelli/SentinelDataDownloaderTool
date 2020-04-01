@@ -2,10 +2,13 @@ import tkinter as tk
 from tkinter.ttk import Progressbar
 from tkinter.ttk import Separator
 import tkinter.font as TkFont
+import downloader
 
 class DownloaderWidget:
-  def __init__(self, root):
+  def __init__(self, root, generatorWidget):
     self.root = root
+    self.generatorWidget = generatorWidget
+
     self.helv16 = TkFont.Font(self.root, family="Helvetica",size=16)
     self.helv22 = TkFont.Font(self.root, family="Helvetica",size=26)
     self.date_var = tk.StringVar(self.root)
@@ -18,15 +21,24 @@ class DownloaderWidget:
     self.createGUI(self.root)
 
   def downloadCommand(self):
-    s2_selectors, s1_selectors = self.getBandFromOptions()
-    start_date, end_date, date_names = self.getDate()
-    n_of_image = int(self.number_of_images.get())
-    print(s2_selectors)
-    print(s1_selectors)
-    print(start_date)
-    print(end_date)
-    print(date_names)
-    print(n_of_image)
+
+    points = self.generatorWidget.getPoints()
+
+    if points is None:
+      tk.messagebox.showinfo("Error", "Before starting the downloading process, please generate, load or get new points!!!")
+    else:
+      s2_selectors, s1_selectors = self.getBandFromOptions()
+      start_date, end_date, date_names = self.getDate()
+      n_of_image = int(self.number_of_images.get())
+      scene_size = int(self.scene_size.get())
+
+      print(s2_selectors)
+      print(s1_selectors)
+      print(start_date)
+      print(end_date)
+      print(date_names)
+      print(n_of_image)
+      print(scene_size)
 
   def getDate(self):
     date_names = []

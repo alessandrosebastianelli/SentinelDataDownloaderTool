@@ -58,3 +58,6 @@ class GeneratorWidget:
 
     self.get_new_button = tk.Button(generator_sub_frame_2, text='GET NEW', height=2, width=15, font=self.helv16, command = self.getNewCommand)
     self.get_new_button.grid(row=2, column=5, sticky=tk.E)
+
+  def getPoints(self):
+    return self.points

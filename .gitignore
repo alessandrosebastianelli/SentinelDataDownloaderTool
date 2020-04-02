@@ -12,6 +12,8 @@ code/main_gui.py
 code/downloader_old.py
 
 gui_code/__pycache__
+gui_code/icon.png
+
 dataset_sample/sen1/zone_4
 dataset_sample/sen1/zone_7_a
 dataset_sample/sen1/zone_7_b

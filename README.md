@@ -207,8 +207,8 @@ s1_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/dataset/s
 ## Menu bar:
 
 - **ToDo - File**: gives access to the program files, such as the csv sheet with the points generated
-- **Settings**: allows you to change the tool settings, in particular for the automatic section
-- **Authentication**: allows authentication for google earth engine operation
+- **ToDo - Settings**: allows you to change the tool settings, in particular for the automatic section
+- **ToDo - Authentication**: allows authentication for google earth engine operation
 - **Preview**: If pressed it will activate the view of the dataset, press next to iterate through the dataset: 
 
 ![](readme_imgs/DatasetPreview.png)
@@ -219,28 +219,28 @@ s1_path = '/Users/alessandrosebastianelli/Desktop/downloader_tool/code/dataset/s
 ## Main window:
 
 - **Generator**:
-	- Number of points
-	- Generate
-	- Load
-	- Get new
+	- *Entry->* Number of points: number of points to generate
+	- *Button->* Generate: generate new <number of points> points
+	- *Button->* Load: load from a file the previously generated points
+	- *Button->* Get new: get from generated or loaded points a sample of <number of points> points
 - **Downloader**:
-	- Number of images
-	- Date definition
-	- Band definition
-	- Download 
+	- *Entry->* Number of images: number of scene to download
+	- *Entry->* Scene size: size of each image in kilometers
+	- *Menu->* Date definition: definition of period of interest
+	- *Menu->* Band definition: definition of bands of interest
+	- *Button->* Download: start the downloading process
 - **Converter**:
-	- Normalization type
-	- Output type
-	- Convert
+	- *Menu->* Normalization type: select a normalization technique
+	- *Menu->* Output type: select the output format
+	- *Button->* Convert: start the conversion process
 - **Cleaner**:
-	- Clean
-	- Manual clean	 	
+	- *Button->* Clean: start the cleaning process
+	- *Button->* Manual clean: launh the manual cleaner
 - **Extractor**:
-	- Size x axis
-	- Size y axis
-	- Extract
+	- *Entry->* Patch size: size in pixels of the patch to extract
+	- *Button->* Extract: start the extraction process
 - **Automatic**:
-	- Start 
+	- *Button->* Start: start the full automatic process with default settings
 
 # Add-on
 ## Manual cleaner

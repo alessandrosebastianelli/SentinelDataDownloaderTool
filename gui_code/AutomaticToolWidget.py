@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter.ttk import Progressbar
 from tkinter.ttk import Separator
 import tkinter.font as TkFont
+from JsonHandler import *
 
 class AutomaticToolWidget:
   def __init__(self, root):
@@ -9,6 +10,18 @@ class AutomaticToolWidget:
     self.helv16 = TkFont.Font(self.root, family="Helvetica",size=16)
     self.helv22 = TkFont.Font(self.root, family="Helvetica",size=26)
     self.createGUI(self.root)
+    self.jsonHandler = JsonHandler()
+
+  def startCommand(self):
+    generator_settings, downloader_settings, converter_settings, extractor_settings = self.loadSettings()
+
+  def loadSettings(self):
+    generator_settings = self.jsonHandler.loadSettings('generator')
+    downloader_settings = self.jsonHandler.loadSettings('downloader')
+    converter_settings = self.jsonHandler.loadSettings('converter')
+    extractor_settings = self.jsonHandler.loadSettings('extractor')
+
+    return generator_settings, downloader_settings, converter_settings, extractor_settings
 
   def createGUI(self, root):
     #----------------------- CLEANER FRAME ---------------------
@@ -43,7 +56,7 @@ class AutomaticToolWidget:
     self.extractor_progress = Progressbar(main_frame, orient=tk.HORIZONTAL, length=300, mode='determinate') 
     self.extractor_progress.grid(row=6, column=2, sticky=tk.E)
 
-    self.start_button = tk.Button(main_frame, text='START', height=2, width=15, font=self.helv16, command = None)
+    self.start_button = tk.Button(main_frame, text='START', height=2, width=15, font=self.helv16, command = self.startCommand)
     self.start_button.grid(row=4, column=3, sticky=tk.E)
 
 

@@ -29,16 +29,26 @@ class DownloaderWidget:
     else:
       s2_selectors, s1_selectors = self.getBandFromOptions()
       start_date, end_date, date_names = self.getDate()
-      n_of_image = int(self.number_of_images.get())
+      n_of_images = int(self.number_of_images.get())
       scene_size = int(self.scene_size.get())
 
-      print(s2_selectors)
-      print(s1_selectors)
-      print(start_date)
-      print(end_date)
-      print(date_names)
-      print(n_of_image)
-      print(scene_size)
+      n_of_regions = 3
+
+      downloader.download(self.downloader_progress, 
+              points, 
+              scene_size, 
+              start_date, 
+              end_date, 
+              date_names, 
+              s2_selectors, 
+              s1_selectors, 
+              n_of_regions, 
+              n_of_images, 
+              '/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/gui_code/download/*', 
+              '/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/gui_code/download', 
+              '/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/gui_code/data/sen2/',
+              '/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/gui_code/data/sen1/', 
+              False)
 
   def getDate(self):
     date_names = []

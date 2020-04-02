@@ -67,7 +67,6 @@ class PreviewWidget(Frame):
         self.S2_text.update()
         self.S1_text.update()
 
-
     def draw_map(self):
         self.fig.axes.clear()
         self.rgb, self.vv, self.rgb_path, self.vv_path = next(self.generator)
@@ -100,7 +99,6 @@ class PreviewWidget(Frame):
         s2_path_label = tk.Label(path_frame, text='Sentinel-2 images paths: ', font=self.helv16) 
         s1_path_label = tk.Label(path_frame, text='Sentinel-1 images paths: ', font=self.helv16) 
         
-
         self.S2_text = tk.Text(path_frame, height=4, width=50, font=self.helv16)
         self.S1_text = tk.Text(path_frame, height=4, width=50, font=self.helv16)
 
@@ -121,13 +119,7 @@ class PreviewWidget(Frame):
         self.S1_text.grid(row=1, column=6)
         S1_scroll.grid(row=1, column=7)
         
-        #self.S1_text.insert(tk.END, self.vv_path)
-
-        
         self.draw_map()
-
-        #----When press the x button then destroy the child window
-        #self.preview_window.protocol("WM_DELETE_WINDOW", self.quit)
 
     def quit(self):
         self.preview_window.destroy()

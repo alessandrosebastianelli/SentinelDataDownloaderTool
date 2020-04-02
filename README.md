@@ -52,6 +52,8 @@ pip install <name of package>
 - rasterio
 - geopandas
 - descartes
+- tk
+
 
 # Using the software with Jupyter Notebook
 

@@ -3,6 +3,10 @@ from tkinter.ttk import Progressbar
 from tkinter.ttk import Separator
 import tkinter.font as TkFont
 from JsonHandler import *
+import generator
+import downloader
+import platform
+import os
 
 class AutomaticToolWidget:
   def __init__(self, root):
@@ -13,13 +17,36 @@ class AutomaticToolWidget:
     self.jsonHandler = JsonHandler()
 
   def startCommand(self):
+
+    system = platform.system()
+    if system == 'Windows':
+      windows = True
+    else:
+      windows = False
+
     generator_settings, downloader_settings, converter_settings, extractor_settings = self.loadSettings()
+    points = generator.get_land_coordinates(self.generator_progress, number = generator_settings['number_of_points'])
+    downloader.download(self.downloader_progress, 
+        points, 
+        downloader_settings['scene_size'], 
+        downloader_settings['start_date'], 
+        downloader_settings['end_date'], 
+        downloader_settings['date_names'], 
+        downloader_settings['s2_selectors'], 
+        downloader_settings['s1_selectors'], 
+        downloader_settings['number_of_scene'], 
+        downloader_settings['number_of_images'],
+        os.path.join(os.getcwd(), 'gui_code', 'download', '*'),
+        os.path.join(os.getcwd(), 'gui_code', 'download'),
+        os.path.join(os.getcwd(), 'gui_code', 'data', 'sen2',""),
+        os.path.join(os.getcwd(), 'gui_code', 'data', 'sen1',""),
+        windows)
 
   def loadSettings(self):
-    generator_settings = self.jsonHandler.loadSettings('generator')
-    downloader_settings = self.jsonHandler.loadSettings('downloader')
-    converter_settings = self.jsonHandler.loadSettings('converter')
-    extractor_settings = self.jsonHandler.loadSettings('extractor')
+    generator_settings = self.jsonHandler.get_component_settings('generator')
+    downloader_settings = self.jsonHandler.get_component_settings('downloader')
+    converter_settings = self.jsonHandler.get_component_settings('converter')
+    extractor_settings = self.jsonHandler.get_component_settings('extractor')
 
     return generator_settings, downloader_settings, converter_settings, extractor_settings
 

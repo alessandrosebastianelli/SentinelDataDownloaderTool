@@ -1,7 +1,7 @@
 {
   "generator":[
     {
-      "number_of_points":5000
+      "number_of_points":10
     }
   ],
   
@@ -12,9 +12,9 @@
       "date_names": ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
       "s2_selectors": ["B2", "B3", "B4", "QA60"],
       "s1_selectors": ["VV"],
-      "number_of_scene": 10,
-      "number_of_images": 3,
-      "scene_size": 10
+      "number_of_scene": 1,
+      "number_of_images": 1,
+      "scene_size": 1
     }
   ],
 

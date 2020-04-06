@@ -36,8 +36,8 @@ class DownloaderWidget:
       n_of_regions = int(self.number_of_scenes.get())
       n_of_images = int(self.number_of_images.get())
       scene_size = int(self.scene_size.get())
+      
       system = platform.system()
-
       if system == 'Windows':
         windows = True
       else:

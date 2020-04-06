@@ -24,6 +24,16 @@ class DownloaderWidget:
 
     self.createGUI(self.root)
 
+  def getSceneSizeInPixel(self):
+    resolution = 10
+    patch_size_meter = int(self.scene_size.get())*1000
+    patch_size_in_pixel = int(patch_size_meter/resolution)
+
+    return patch_size_in_pixel
+  
+  def getSelectors(self):
+    return self.band_var.get()
+
   def downloadCommand(self):
 
     points = self.generatorWidget.getPoints()

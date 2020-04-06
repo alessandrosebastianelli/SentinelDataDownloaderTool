@@ -50,12 +50,10 @@ def data_extractor(path, zone_name, date, downloads_folder_path, windows):
         if windows == True:
             f = names[i].split('.')[0].split('\\')
             fn = f[len(f)-1]
-            #pos = path+zone_name+'\\'+date+'\\'+fn
             pos = os.path.join(path+zone_name, os.path.join(date, fn))
         else:
             f = names[i].split('.')[0].split('/')
             fn = f[len(f)-1]
-            #pos = path+zone_name+'/'+date+'/'+fn
             pos = os.path.join(path+zone_name, os.path.join(date, fn))
 
         os.makedirs(pos, exist_ok=True)

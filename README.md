@@ -54,6 +54,7 @@ pip install <name of package>
 - descartes
 - tk
 
+or pip install -r requirements.txt
 
 # Using the software with Jupyter Notebook
 

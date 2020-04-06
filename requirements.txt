@@ -1,0 +1,14 @@
+numpy
+rasterio
+geetools
+earthengine-api
+global-land-mask
+matplotlib
+descartes
+pandas
+geopandas
+tk
+scipy
+imageio
+pillow
+scikit-image

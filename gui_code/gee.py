@@ -12,7 +12,6 @@ EARTH_RADIUS  = 6271.0
 DEGREES_TO_RADIANS = math.pi/180.0
 RADIANS_TO_DEGREE = 180.0/math.pi
 
-
 def change_in_latitude(kms):
     '''
         Given a distance north, it returns the change in latitude

@@ -1,13 +1,13 @@
 
 ## Work in progress, actions needed:
 - [ ] Code cleaning (some scripts must be better written and path management for the various operating systems must be fixed.
-- [ ] Add patch extractor code
+- [X] Add patch extractor code
 - [X] Add GUI code
 - [ ] Update manual
 - [X] Add manual cleaner 
 - [X] Create GUI
 - [ ] Manual Cleaner to widget 
-- [ ] Add functionalities to GUI
+- [X] Add functionalities to GUI
 - [ ] Testing
 
 # Sentinel Data Downloader Tool

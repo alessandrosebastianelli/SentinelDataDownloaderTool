@@ -4,6 +4,7 @@ from tkinter.ttk import Separator
 import tkinter.font as TkFont
 import cleaner
 import platform
+import os
 
 class CleanerWidget:
   def __init__(self, root, downloaderWidget):
@@ -49,7 +50,7 @@ class CleanerWidget:
     cleaner_sub_frame_2 = tk.Frame(cleaner_frame)
     cleaner_sub_frame_2.grid(row=2, column=1, sticky=tk.E)
 
-    self.cleaner_button = tk.Button(cleaner_sub_frame_2, text='CLEAN', height=2, width=15, font=self.helv16, command = None)
+    self.cleaner_button = tk.Button(cleaner_sub_frame_2, text='CLEAN', height=2, width=15, font=self.helv16, command = self.cleanCommand)
     self.cleaner_button.grid(row=2, column=1, sticky=tk.E)
     self.manual_cleaner_button = tk.Button(cleaner_sub_frame_2, text='MANUAL CLEAN', height=2, width=15, font=self.helv16, command = None)
     self.manual_cleaner_button.grid(row=2, column=2, sticky=tk.E)

@@ -149,7 +149,7 @@ class DownloaderWidget:
     date_menu.config(width=15, font=self.helv16)
     date_menu.grid(row=2, column=4, sticky=tk.E)
 
-    scene_size_label = tk.Label(downloader_sub_frame_2, text='Scene size', font=self.helv16)
+    scene_size_label = tk.Label(downloader_sub_frame_2, text='Scene size in km', font=self.helv16)
     scene_size_label.grid(row=4, column=1, sticky=tk.E)
     self.scene_size_area = tk.Entry(downloader_sub_frame_2, textvariable=self.scene_size, width=10, font=self.helv16, borderwidth=1, relief="solid")
     self.scene_size_area.grid(row=4, column=2, sticky=tk.E)

@@ -27,7 +27,7 @@
 
   "extractor":[
     {
-      "patch_size":256
+      "patch_size":50
     }
   ]
 }

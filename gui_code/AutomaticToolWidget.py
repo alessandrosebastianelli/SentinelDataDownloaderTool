@@ -9,6 +9,7 @@ import converter
 import cleaner
 import platform
 import os
+import patch_extractor
 
 class AutomaticToolWidget:
   def __init__(self, root):
@@ -74,6 +75,15 @@ class AutomaticToolWidget:
                     os.path.join(os.getcwd(), 'gui_code', 'dataset', 'sen1', "*"),
                     downloader_settings['date_names'], 
                     windows)
+    
+    patch_extractor.extract(self.extractor_progress, 
+                      os.path.join(os.getcwd(), 'gui_code', 'dataset', 'sen2', '*'), 
+                      os.path.join(os.getcwd(), 'gui_code', 'dataset', 'sen1', '*'), 
+                      os.path.join(os.getcwd(), 'gui_code', 'dataset_patch', 'preview', ""), 
+                      downloader_settings['date_names'], 
+                      patch_size_in_pixel, 
+                      extractor_settings['patch_size'], 
+                      windows)
 
   def loadSettings(self):
     generator_settings = self.jsonHandler.get_component_settings('generator')

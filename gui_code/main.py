@@ -19,7 +19,7 @@ generatorWidget  = GeneratorWidget(root)
 downloaderWidget = DownloaderWidget(root, generatorWidget)
 converterWidget  = ConverterWidget(root, downloaderWidget)
 cleanerWidget = CleanerWidget(root, downloaderWidget)
-patchextractorWidget = PatchExtractorWidget(root)
+patchextractorWidget = PatchExtractorWidget(root, downloaderWidget)
 automatictoolWidget = AutomaticToolWidget(root)
 
 root.mainloop()

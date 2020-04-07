@@ -20,8 +20,8 @@ class PreviewWidget(Frame):
         self.helv16 = TkFont.Font(self.root, family="Helvetica",size=16)
         self.helv22 = TkFont.Font(self.root, family="Helvetica",size=26)
 
-        s2_paths, s2_zones = image_loader.get_images_path('/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/dataset_sample/', 'sen2')
-        s1_images, s1_zones = image_loader.get_images_path('/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/dataset_sample/', 'sen1')
+        s2_paths, s2_zones = image_loader.get_images_path('/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/gui_code/dataset/', 'sen2')
+        s1_images, s1_zones = image_loader.get_images_path('/Users/alessandrosebastianelli/Desktop/SentinelDataDownloaderTool/gui_code/dataset/', 'sen1')
         s2_images, cloud_masks = image_loader.split_S2_images(s2_paths)
         s2_series = image_loader.get_time_series(s2_images)
         s1_series = image_loader.get_time_series(s1_images)

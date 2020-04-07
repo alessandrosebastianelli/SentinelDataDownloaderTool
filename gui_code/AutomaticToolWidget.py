@@ -5,6 +5,8 @@ import tkinter.font as TkFont
 from JsonHandler import *
 import generator
 import downloader
+import converter
+import cleaner
 import platform
 import os
 
@@ -41,6 +43,37 @@ class AutomaticToolWidget:
         os.path.join(os.getcwd(), 'gui_code', 'data', 'sen2',""),
         os.path.join(os.getcwd(), 'gui_code', 'data', 'sen1',""),
         windows)
+
+    resolution = 10
+    patch_size_meter = int(downloader_settings['scene_size'])*1000
+    patch_size_in_pixel = int(patch_size_meter/resolution)
+
+    converter.convert_s2(self.converter_progress, 
+      os.path.join(os.getcwd(), 'gui_code', 'data', 'sen2', "*"),
+      os.path.join(os.getcwd(), 'gui_code', 'data', 'sen1', "*"),
+      (patch_size_in_pixel, patch_size_in_pixel), 
+      downloader_settings['s2_selectors'],
+      downloader_settings['s1_selectors'],
+      's&n',
+      windows)
+
+    converter.convert_s1(self.converter_progress, 
+      os.path.join(os.getcwd(), 'gui_code', 'data', 'sen2',"*"),
+      os.path.join(os.getcwd(), 'gui_code', 'data', 'sen1',"*"),
+      (patch_size_in_pixel, patch_size_in_pixel), 
+      downloader_settings['s2_selectors'],
+      downloader_settings['s1_selectors'],
+      's&n',
+      windows)
+
+    cleaner.clean_s2(self.cleaner_progress,
+                    os.path.join(os.getcwd(), 'gui_code', 'dataset', 'sen2', "*"),
+                    downloader_settings['date_names'], 
+                    windows)
+    cleaner.clean_s1(self.cleaner_progress,
+                    os.path.join(os.getcwd(), 'gui_code', 'dataset', 'sen1', "*"),
+                    downloader_settings['date_names'], 
+                    windows)
 
   def loadSettings(self):
     generator_settings = self.jsonHandler.get_component_settings('generator')

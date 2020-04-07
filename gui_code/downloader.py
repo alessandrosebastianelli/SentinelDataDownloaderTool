@@ -72,9 +72,7 @@ def download(progressbar, points, patch_size, start_date, end_date, date_names, 
     regions, rectangles = gee.get_region_and_rectangle(points[0,:], points[1,:], size = patch_size)
     zone_names = get_zone_names(points)
 
-    progressbar.start()
-    progressbar['maximum'] = n_of_regions*n_imgs*2*len(start_date)
-    counter = 0
+    progressbar['maximum'] = n_of_regions
 
     for scene in range(0, n_of_regions):
         #--------------------------------------------- SENTINEL-2 ---------------------------------------------
@@ -84,11 +82,8 @@ def download(progressbar, points, patch_size, start_date, end_date, date_names, 
         for period in range(len(start_date)):
             s2data = gee.get_s2_data_from_gge(rectangles[scene], start_date[period], end_date[period])
             gee.download_s2_data(s2data, regions[scene], zone_names[scene], date_names[period], download_path, n_imgs=n_imgs, selectors=s2_selectors)
-            #sleep(1)
             data_extractor(sen2_images_base_path, zone_names[scene], date_names[period], downloads_folder_path, windows = windows)
-            progressbar["value"] = counter
-            progressbar.update()
-            counter = counter + 1
+            
         print('     > Sentinel-2 region %d of %d download completed' % (scene+1, n_of_regions))
 
         #--------------------------------------------- SENTINEL-2 ---------------------------------------------
@@ -98,14 +93,11 @@ def download(progressbar, points, patch_size, start_date, end_date, date_names, 
         for period in range(len(start_date)):
             s1data = gee.get_s1_data_from_gge(rectangles[scene], start_date[period], end_date[period])
             gee.download_s1_data(s1data, regions[scene], zone_names[scene], date_names[period], download_path, n_imgs=n_imgs, selectors=s2_selectors)
-            #sleep(1)
             data_extractor(sen1_images_base_path, zone_names[scene], date_names[period], downloads_folder_path, windows = windows)
-            #sleep(3)
-            progressbar["value"] = counter
-            progressbar.update()
-            counter = counter + 1
 
         print('     > Sentinel-1 region %d of %d download completed' % (scene+1, n_of_regions))
-        
+        progressbar["value"] = scene
+        progressbar.update()
+
     progressbar.stop()
     print('   #Download completed')

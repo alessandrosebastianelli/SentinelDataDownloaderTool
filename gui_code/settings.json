@@ -12,8 +12,8 @@
       "date_names": ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
       "s2_selectors": ["B2", "B3", "B4", "QA60"],
       "s1_selectors": ["VV"],
-      "number_of_scene": 1,
-      "number_of_images": 1,
+      "number_of_scene": 2,
+      "number_of_images": 2,
       "scene_size": 1
     }
   ],

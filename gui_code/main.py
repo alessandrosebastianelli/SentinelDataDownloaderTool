@@ -18,7 +18,7 @@ menubarWidget = MenuBarWidget(root)
 generatorWidget  = GeneratorWidget(root)
 downloaderWidget = DownloaderWidget(root, generatorWidget)
 converterWidget  = ConverterWidget(root, downloaderWidget)
-cleanerWidget = CleanerWidget(root)
+cleanerWidget = CleanerWidget(root, downloaderWidget)
 patchextractorWidget = PatchExtractorWidget(root)
 automatictoolWidget = AutomaticToolWidget(root)
 

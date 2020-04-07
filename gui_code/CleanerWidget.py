@@ -2,13 +2,34 @@ import tkinter as tk
 from tkinter.ttk import Progressbar
 from tkinter.ttk import Separator
 import tkinter.font as TkFont
+import cleaner
+import platform
 
 class CleanerWidget:
-  def __init__(self, root):
+  def __init__(self, root, downloaderWidget):
     self.root = root
+    self.downloaderWidget = downloaderWidget
     self.helv16 = TkFont.Font(self.root, family="Helvetica",size=16)
     self.helv22 = TkFont.Font(self.root, family="Helvetica",size=26)
     self.createGUI(self.root)
+
+  def cleanCommand(self):
+    system = platform.system()
+    if system == 'Windows':
+      windows = True
+    else:
+      windows = False
+
+    _, _, date_names = self.downloaderWidget.getDate()
+
+    cleaner.clean_s2(self.cleaner_progress,
+                    os.path.join(os.getcwd(), 'gui_code', 'dataset', 'sen2', "*"),
+                    date_names, 
+                    windows)
+    cleaner.clean_s1(self.cleaner_progress,
+                    os.path.join(os.getcwd(), 'gui_code', 'dataset', 'sen1', "*"),
+                    date_names, 
+                    windows)
 
   def createGUI(self, root):
     #----------------------- CLEANER FRAME ---------------------

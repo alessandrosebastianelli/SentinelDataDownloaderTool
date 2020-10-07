@@ -1,0 +1,179 @@
+from glob import glob
+from os.path import basename
+import numpy as np
+import os
+from imageio import imread
+
+def find(directory,windows):
+    for region in glob(directory):
+        if windows:
+            r = region+'\\*'
+        else:
+            r = region+'/*'
+
+        for period in glob(r):
+            if windows:
+                p = period+'\\*'
+            else:
+                p = period+'/*'
+
+            for scene in glob(p):
+                if windows: 
+                    base_name = scene #+ '\\' + basename(scene)
+                else:
+                    base_name = scene #+ '/' + basename(scene)
+                
+                yield base_name
+
+def get_loactions(directory, windows):
+    locations = []
+    for region in glob(directory):
+        if windows:
+            splitted = region.split('\\')
+        else:
+            splitted = region.split('/')
+            
+        locations.append(splitted[len(splitted)-1])
+    
+    return locations
+
+def split_by_locations(files_generator, locations):
+    gen = list(files_generator)
+    l = len(gen)
+
+    for i in range(len(locations)):
+        batch = []
+        
+        for j in range(l):
+            f = gen[j]
+            if locations[i] in f:
+                batch.append(f)
+        yield batch
+
+def split_by_date(files, date):
+    for d in date:
+        batch = []
+        for f in files:
+            if d in f:
+                batch.append(f)
+        yield batch
+
+def percentage_wrong_values_s1(s1_image, treshold = 170):
+    data = s1_image.flatten()
+    wrong_values_amount = 0
+    for i in range(len(data)):
+        if data[i] > treshold:
+            wrong_values_amount = wrong_values_amount + 1
+    
+    wrong_values_percentage = (wrong_values_amount/len(data))*100
+    return wrong_values_percentage
+
+def percentage_wrong_values_s2(s2_image, black_treshold=0, white_treshold=125):
+    r = s2_image[:,:,0].flatten()
+    g = s2_image[:,:,1].flatten()
+    b = s2_image[:,:,2].flatten()
+
+    wrong_values_amount = 0
+    white_values_amount = 0
+
+    l = s2_image.shape[0]*s2_image.shape[1]
+
+    for i in range(l):
+        if r[i] == black_treshold and g[i] == black_treshold and b[i] == black_treshold:
+            wrong_values_amount = wrong_values_amount + 1
+        if r[i] > white_treshold and g[i] > white_treshold and b[i] > white_treshold:
+            white_values_amount = white_values_amount + 1
+
+    
+    wrong_values_percentage = (wrong_values_amount/l)*100
+    white_values_percentage = (white_values_amount/l)*100
+
+    return wrong_values_percentage, white_values_percentage
+
+def clean_s1(s1_path, date_names, windows):
+    file_generator = find(s1_path,  windows)
+    locations = get_loactions(s1_path, windows)
+
+    locations_genenerator = iter(split_by_locations(file_generator, locations))    
+
+    for i in range(0,len(locations)):
+        scene = next(locations_genenerator)
+        print('     > Scene %d of %d: %s' % (i+1, len(locations), locations[i]))
+        date_generator = iter(split_by_date(scene, date_names))
+        for j in range(len(list(split_by_date(scene, date_names)))):
+            date = next(date_generator)
+            print('       - Date: %s' % (date_names[j]))
+            wrong_score, prev_wrong_score = 0, 0
+            best_image = 'None'
+            # Images for each date
+            for k in range(len(date)):
+                image = imread(date[k])
+                if k==0:
+                    prev_wrong_score = percentage_wrong_values_s1(image)
+                    best_image = date[k]
+                else:
+                    wrong_score = percentage_wrong_values_s1(image)
+                    if wrong_score <= prev_wrong_score: 
+                        prev_wrong_score = wrong_score    
+                        best_image = date[k]
+                        
+            for k in range(len(date)):
+                if not(date[k] == best_image):
+                    os.remove(date[k])
+                    print('         * Removing Sentinel-1 image %d of %d ' % (k+1, len(date)))
+                else:
+                    print('         * Best Sentinel-1 image %d of %d ' % (k+1, len(date)))
+
+
+def clean_s2(s2_path, date_names, windows):
+    file_generator = find(s2_path,  windows)
+    locations = get_loactions(s2_path, windows)
+
+    locations_genenerator = iter(split_by_locations(file_generator, locations))    
+
+    for i in range(0,len(locations)):
+        scene = next(locations_genenerator)
+        date_generator = iter(split_by_date(scene, date_names))
+        print('     > Scene %d of %d: %s' % (i+1, len(locations), locations[i]))
+        for j in range(len(list(split_by_date(scene, date_names)))):
+            date = next(date_generator)
+            print('       - Date: %s' % (date_names[j]))
+            prev_wrong_score, prev_white_score = 0,0
+            white_score, wrong_score = 0,0
+            best_image = 'None'
+            # Images for each date
+            for k in range(len(date)):
+                image = imread(date[k])
+                if k==0:
+                    prev_wrong_score, prev_white_score = percentage_wrong_values_s2(image)
+                    best_image = date[k]
+                else:
+                    wrong_score, white_score = percentage_wrong_values_s2(image)
+
+                    # If the current image presents less wrong values then the previous one
+                    # set the the current images as the best image
+                    if wrong_score <= prev_wrong_score:     
+                        best_image = date[k]
+                        prev_wrong_score = wrong_score
+                    # If the current image presents less white values then the previous one
+                    # set the the current images as the best image
+                    if white_score <= prev_white_score:
+                        best_image = date[k]
+                        prev_white_score = white_score
+                            
+            # Save the best image and remove the other images
+            for k in range(len(date)):
+                if not(date[k] == best_image):
+                    os.remove(date[k])
+                    print('         * Removing Sentinel-2 image %d of %d ' % (k+1, len(date)))
+                else:
+                    print('         * Best Sentinel-2 image %d of %d ' % (k+1, len(date)))
+
+
+
+def clean(s2_path, s1_path, date_names, windows):
+    print('   # Sentinel-2 data cleaning')
+    clean_s2(s2_path, date_names, windows)
+    print('   # Sentinel-1 data cleaning')
+    clean_s1(s1_path, date_names, windows)
+    print('   # Date cleaned')

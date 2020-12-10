@@ -4,7 +4,7 @@ import json
 class JsonHandler:
 
   def __init__(self):
-    self.settings_file_path = "gui_code/settings.json"
+    self.settings_file_path = "src_gui/settings.json"
     with open(self.settings_file_path, "r") as read_file:
       self.json_data = json.load(read_file)
   

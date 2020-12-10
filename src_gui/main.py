@@ -9,7 +9,7 @@ from MenuBarWidget import *
 import os
 
 root = tk.Tk()
-root.iconphoto(False, tk.PhotoImage(file=os.path.join('gui_code','icon.png')))
+root.iconphoto(False, tk.PhotoImage(file=os.path.join('src_gui','icon.png')))
 root.geometry('650x700')
 root.title('Sentinel Data Downloader Tool')
 root.resizable(False, False)

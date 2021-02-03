@@ -24,11 +24,11 @@ class CleanerWidget:
     _, _, date_names = self.downloaderWidget.getDate()
 
     cleaner.clean_s2(self.cleaner_progress,
-                    os.path.join(os.getcwd(), 'gui_code', 'dataset', 'sen2', "*"),
+                    os.path.join(os.getcwd(), 'src_gui', 'dataset', 'sen2', "*"),
                     date_names, 
                     windows)
     cleaner.clean_s1(self.cleaner_progress,
-                    os.path.join(os.getcwd(), 'gui_code', 'dataset', 'sen1', "*"),
+                    os.path.join(os.getcwd(), 'src_gui', 'dataset', 'sen1', "*"),
                     date_names, 
                     windows)
 

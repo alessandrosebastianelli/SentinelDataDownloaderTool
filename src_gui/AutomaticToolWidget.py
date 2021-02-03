@@ -39,10 +39,10 @@ class AutomaticToolWidget:
         downloader_settings['s1_selectors'], 
         downloader_settings['number_of_scene'], 
         downloader_settings['number_of_images'],
-        os.path.join(os.getcwd(), 'gui_code', 'download', '*'),
-        os.path.join(os.getcwd(), 'gui_code', 'download'),
-        os.path.join(os.getcwd(), 'gui_code', 'data', 'sen2',""),
-        os.path.join(os.getcwd(), 'gui_code', 'data', 'sen1',""),
+        os.path.join(os.getcwd(), 'src_gui', 'download', '*'),
+        os.path.join(os.getcwd(), 'src_gui', 'download'),
+        os.path.join(os.getcwd(), 'src_gui', 'data', 'sen2',""),
+        os.path.join(os.getcwd(), 'src_gui', 'data', 'sen1',""),
         windows)
 
     resolution = 10
@@ -50,8 +50,8 @@ class AutomaticToolWidget:
     patch_size_in_pixel = int(patch_size_meter/resolution)
 
     converter.convert_s2(self.converter_progress, 
-      os.path.join(os.getcwd(), 'gui_code', 'data', 'sen2', "*"),
-      os.path.join(os.getcwd(), 'gui_code', 'data', 'sen1', "*"),
+      os.path.join(os.getcwd(), 'src_gui', 'data', 'sen2', "*"),
+      os.path.join(os.getcwd(), 'src_gui', 'data', 'sen1', "*"),
       (patch_size_in_pixel, patch_size_in_pixel), 
       downloader_settings['s2_selectors'],
       downloader_settings['s1_selectors'],
@@ -59,8 +59,8 @@ class AutomaticToolWidget:
       windows)
 
     converter.convert_s1(self.converter_progress, 
-      os.path.join(os.getcwd(), 'gui_code', 'data', 'sen2',"*"),
-      os.path.join(os.getcwd(), 'gui_code', 'data', 'sen1',"*"),
+      os.path.join(os.getcwd(), 'src_gui', 'data', 'sen2',"*"),
+      os.path.join(os.getcwd(), 'src_gui', 'data', 'sen1',"*"),
       (patch_size_in_pixel, patch_size_in_pixel), 
       downloader_settings['s2_selectors'],
       downloader_settings['s1_selectors'],
@@ -68,18 +68,18 @@ class AutomaticToolWidget:
       windows)
 
     cleaner.clean_s2(self.cleaner_progress,
-                    os.path.join(os.getcwd(), 'gui_code', 'dataset', 'sen2', "*"),
+                    os.path.join(os.getcwd(), 'src_gui', 'dataset', 'sen2', "*"),
                     downloader_settings['date_names'], 
                     windows)
     cleaner.clean_s1(self.cleaner_progress,
-                    os.path.join(os.getcwd(), 'gui_code', 'dataset', 'sen1', "*"),
+                    os.path.join(os.getcwd(), 'src_gui', 'dataset', 'sen1', "*"),
                     downloader_settings['date_names'], 
                     windows)
     
     patch_extractor.extract(self.extractor_progress, 
-                      os.path.join(os.getcwd(), 'gui_code', 'dataset', 'sen2', '*'), 
-                      os.path.join(os.getcwd(), 'gui_code', 'dataset', 'sen1', '*'), 
-                      os.path.join(os.getcwd(), 'gui_code', 'dataset_patch', 'preview', ""), 
+                      os.path.join(os.getcwd(), 'src_gui', 'dataset', 'sen2', '*'), 
+                      os.path.join(os.getcwd(), 'src_gui', 'dataset', 'sen1', '*'), 
+                      os.path.join(os.getcwd(), 'src_gui', 'dataset_patch', 'preview', ""), 
                       downloader_settings['date_names'], 
                       patch_size_in_pixel, 
                       extractor_settings['patch_size'], 

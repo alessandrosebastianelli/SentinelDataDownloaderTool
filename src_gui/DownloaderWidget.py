@@ -63,10 +63,10 @@ class DownloaderWidget:
         s1_selectors, 
         n_of_regions, 
         n_of_images, 
-        os.path.join(os.getcwd(), 'gui_code', 'download', '*'),
-        os.path.join(os.getcwd(), 'gui_code', 'download'),
-        os.path.join(os.getcwd(), 'gui_code', 'data', 'sen2',""),
-        os.path.join(os.getcwd(), 'gui_code', 'data', 'sen1',""),
+        os.path.join(os.getcwd(), 'src_gui', 'download', '*'),
+        os.path.join(os.getcwd(), 'src_gui', 'download'),
+        os.path.join(os.getcwd(), 'src_gui', 'data', 'sen2',""),
+        os.path.join(os.getcwd(), 'src_gui', 'data', 'sen1',""),
         windows)
     
   def getDate(self):

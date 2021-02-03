@@ -29,8 +29,8 @@ class ConverterWidget:
     s2_conversion_mode = self.getNormalizationType()
     
     converter.convert_s2(self.converter_progress, 
-      os.path.join(os.getcwd(), 'gui_code', 'data', 'sen2', "*"),
-      os.path.join(os.getcwd(), 'gui_code', 'data', 'sen1', "*"),
+      os.path.join(os.getcwd(), 'src_gui', 'data', 'sen2', "*"),
+      os.path.join(os.getcwd(), 'src_gui', 'data', 'sen1', "*"),
       self.downloaderWidget.getSceneSizeInPixel(), 
       s2_selectors,
       s1_selectors,
@@ -38,8 +38,8 @@ class ConverterWidget:
       windows)
 
     converter.convert_s1(self.converter_progress, 
-      os.path.join(os.getcwd(), 'gui_code', 'data', 'sen2',"*"),
-      os.path.join(os.getcwd(), 'gui_code', 'data', 'sen1',"*"),
+      os.path.join(os.getcwd(), 'src_gui', 'data', 'sen2',"*"),
+      os.path.join(os.getcwd(), 'src_gui', 'data', 'sen1',"*"),
       self.downloaderWidget.getSceneSizeInPixel(), 
       s2_selectors,
       s1_selectors,

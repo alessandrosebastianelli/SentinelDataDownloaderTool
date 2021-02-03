@@ -17,8 +17,8 @@ class WorldMapWidget(Frame):
         self.show_map()
 
     def get_data(self):
-        df_path = os.path.join('gui_code','points.csv')
-        map_path = os.path.join('gui_code',os.path.join('map', 'ne_110m_land.shp'))
+        df_path = os.path.join('src_gui','points.csv')
+        map_path = os.path.join('src_gui',os.path.join('map', 'ne_110m_land.shp'))
         #----Load the dataframe
         df = pd.read_csv(df_path).drop(columns=['Unnamed: 0'])
         #----Load the world map

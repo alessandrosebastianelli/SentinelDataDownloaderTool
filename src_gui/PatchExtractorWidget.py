@@ -25,9 +25,9 @@ class PatchExtractorWidget:
     image_size = self.downloaderWidget.getSceneSizeInPixel()
 
     patch_extractor.extract(self.extractor_progress, 
-                      os.path.join(os.getcwd(), 'gui_code', 'dataset', 'sen2', '*'), 
-                      os.path.join(os.getcwd(), 'gui_code', 'dataset', 'sen1', '*'), 
-                      os.path.join(os.getcwd(), 'gui_code', 'dataset_patch', 'preview', ""), 
+                      os.path.join(os.getcwd(), 'src_gui', 'dataset', 'sen2', '*'), 
+                      os.path.join(os.getcwd(), 'src_gui', 'dataset', 'sen1', '*'), 
+                      os.path.join(os.getcwd(), 'src_gui', 'dataset_patch', 'preview', ""), 
                       date_names, 
                       image_size, 
                       int(self.extractor_size.get()), 

@@ -46,7 +46,7 @@ def get_land_coordinates(progressbar, number = 500):
     progressbar.stop()
     return points
 
-def save_points(points, path = 'gui_code/points.csv'):
+def save_points(points, path = 'src_gui/points.csv'):
     '''
         It saves the generated points into a csv file
     '''
@@ -59,7 +59,7 @@ def save_points(points, path = 'gui_code/points.csv'):
 
     print('   # Points saved')
 
-def load_points(progressbar, path = 'gui_code/points.csv'):
+def load_points(progressbar, path = 'src_gui/points.csv'):
     '''
         It loads the preaviously generated points from a csv file
     '''
@@ -83,7 +83,7 @@ def load_points(progressbar, path = 'gui_code/points.csv'):
 
     return points
 
-def get_new_points(progressbar, n_of_scene, points_path = 'gui_code/points.csv'):
+def get_new_points(progressbar, n_of_scene, points_path = 'src_gui/points.csv'):
     
     df = pd.read_csv(points_path)
     df = df.drop(columns=['Unnamed: 0'])

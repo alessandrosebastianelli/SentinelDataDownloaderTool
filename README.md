@@ -1,5 +1,6 @@
 
 Cite our paper:
+
     @inproceedings{sebastianelli2020automatic,
         title={Automatic Dataset Builder for Machine Learning Applications to Satellite Imagery},
         author={Sebastianelli, Alessandro and Del Rosso, Maria Pia and Ullo, Silvia Liberata},

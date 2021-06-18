@@ -1,12 +1,12 @@
 
 Cite our paper:
-
-@article{sebastianelli2020automatic,
-  title={Automatic Dataset Builder for Machine Learning Applications to Satellite Imagery},
-  author={Sebastianelli, Alessandro and Del Rosso, Maria Pia and Ullo, Silvia Liberata},
-  journal={Elsevier Software X},
-  year={2021}
-}
+    @inproceedings{sebastianelli2020automatic,
+        title={Automatic Dataset Builder for Machine Learning Applications to Satellite Imagery},
+        author={Sebastianelli, Alessandro and Del Rosso, Maria Pia and Ullo, Silvia Liberata},
+        booktitle={Software X},
+        year={2021},
+        organization={Elsevier}
+    }
 
 
 ## Work in progress, actions needed:

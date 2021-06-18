@@ -1,4 +1,14 @@
 
+Cite our paper:
+
+@article{sebastianelli2020automatic,
+  title={Automatic Dataset Builder for Machine Learning Applications to Satellite Imagery},
+  author={Sebastianelli, Alessandro and Del Rosso, Maria Pia and Ullo, Silvia Liberata},
+  journal={Elsevier Software X},
+  year={2021}
+}
+
+
 ## Work in progress, actions needed:
 - [ ] Code cleaning (some scripts must be better written and path management for the various operating systems must be fixed.
 - [X] Add patch extractor code

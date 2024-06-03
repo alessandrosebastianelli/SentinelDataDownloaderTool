@@ -1,4 +1,8 @@
+# News
 
+**This tool is currently under maintenance, since the GEE API has changed the tools needs to be updated**
+
+# ------------
 Cite our paper:
 
     @inproceedings{sebastianelli2020automatic,
